@@ -1,0 +1,25 @@
+{
+	"Name" : "xia0.DisableMelee",
+	"Description" : "DisableMelee in blacklisted or enable in whitelisted modes",
+	"Version": "1.0",
+	"LoadPriority": 1,
+	"ConVars": [
+		{
+			"Name": "disable_melee_blacklist",
+			"DefaultValue": ""
+		},
+		{
+			"Name": "disable_melee_whitelist",
+			"DefaultValue": "gg, chamber, inf"
+		}
+	],
+	"Scripts": [
+		{
+			"Path": "disable_melee.nut",
+			"RunOn": "SERVER && MP",
+			"ServerCallback": {
+				"After": "DisableMeleeInit"
+			}
+		}
+	]
+}
