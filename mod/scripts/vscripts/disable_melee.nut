@@ -15,9 +15,16 @@ void function DisableMeleeInit() {
 	}
 	else currentModeIsBlacklisted = true;
 
-	if (currentModeIsBlacklisted) AddCallback_OnPlayerRespawned(OnPlayerRespawned);
+	if (currentModeIsBlacklisted) {
+		AddCallback_OnPlayerRespawned(OnPlayerRespawned);
+		AddCallback_OnPlayerGetsNewPilotLoadout( OnPlayerGetsNewPilotLoadout );
+	}
 }
 
 void function OnPlayerRespawned( entity player ) {
 	player.TakeOffhandWeapon(OFFHAND_MELEE);
+}
+
+void function OnPlayerGetsNewPilotLoadout( entity player, PilotLoadoutDef loadout ) {
+	OnPlayerRespawned(player);
 }
